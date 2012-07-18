@@ -10,7 +10,7 @@ Copyright: Copyright (c) 2012 Andrew Berkeley
 
 ## Example
 
-```ruby```
+```ruby
 
 	require './lib/calc_json.rb'
 
