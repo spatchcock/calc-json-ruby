@@ -10,13 +10,13 @@ Copyright: Copyright (c) 2012 Andrew Berkeley
 
 ## Example
 
-Calculate the settling velocity of a particle in water based on the schema at data/settling_velocity.json
+Calculate the settling velocity of a particle in water based on the schema at examples/settling_velocity.json
 
 ```ruby
 
 	require './lib/calc_json.rb'
 
-	schema_path = "data/settling_velocity"
+	schema_path = "examples/settling_velocity"
 
 	options     = { 
 	  'particle_density' => 2600.0,            # typical density of sand
@@ -33,13 +33,13 @@ Calculate the settling velocity of a particle in water based on the schema at da
 	puts "settling velocity = #{result.value} #{result.unit.symbol}"
 ```
 
-Calculate the gravitational force on Earth based on the schema at data/gravitational_force.json
+Calculate the gravitational force on Earth based on the schema at examples/gravitational_force.json
 
 ```ruby
 
 	require './lib/calc_json.rb'
 
-	schema_path = "data/gravitational_force"
+	schema_path = "examples/gravitational_force"
 
 	options     = { 
 	  'mass' => 85,                            # some mass quantity
