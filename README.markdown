@@ -1,5 +1,4 @@
-calcJSON-ruby
-==============
+## calcJSON-ruby
 
 Parse and execute calcJSON data in Ruby.
 
@@ -9,8 +8,7 @@ Author: Andrew Berkeley
 
 Copyright: Copyright (c) 2012 Andrew Berkeley
 
-Example
-=======
+## Example
 
 ```ruby```
 
