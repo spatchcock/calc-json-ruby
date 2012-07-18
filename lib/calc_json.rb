@@ -1,0 +1,12 @@
+require 'rubygems'
+require 'quantify'
+require 'execjs'
+require 'json'
+require 'pp'
+
+require './lib/algorithm'
+require './lib/calculation'
+require './lib/definition'
+require './lib/model'
+require './lib/schema'
+require './lib/value'
