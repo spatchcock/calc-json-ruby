@@ -51,6 +51,12 @@ puts "force = #{result.value} #{result.unit.symbol}"
 
 ```
 
+## To do
+* Browsing, filtering and retrieving data
+* Using dataset entries in calculations
+* Specifying units in calculations
+* Support for dataset/model metadata 
+
 ## License
 
 This program is free software: you can redistribute it and/or modify
