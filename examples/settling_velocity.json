@@ -59,7 +59,7 @@
     {
 
       "label": "velocity",
-      "name" : "Velocity",
+      "name" : "Settling Velocity",
       "type" : "decimal",
       "role" : "output",
       "unit" : "m/s"
