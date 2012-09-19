@@ -12,7 +12,7 @@ module CalcJSON
     def wrapped_js(options)
       js = "calculation = function() {"
 
-      @definitions.each { |d| js += "\n   var #{d.label};" }
+      @definitions.each { |d| js += "\n   var #{d.label} = #{d.default || 'null'};" }
 
   	  options.each do |key, value|
   	  	type = @definitions.find {|d| d.label == key.to_s }.type 
