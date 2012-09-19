@@ -10,6 +10,10 @@ module CalcJSON
       end
     end
 
+    def outputs
+      @model.definitions.select{|definition| definition.role == 'output'}.map{|definition| self.send(definition.label.to_sym)}
+    end
+
     def method_missing(method,*args,&block)
     	if self.instance_variables.include?("@#{method.to_s}".to_sym)
     		self.instance_variable_get("@#{method.to_s}".to_sym)
