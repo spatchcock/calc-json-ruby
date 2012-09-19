@@ -2,7 +2,7 @@ module CalcJSON
 
   class Value
 
-  	attr_reader :value, :unit, :definitions
+  	attr_reader :value, :unit, :definition
     
     def initialize(value,definition)
     	@value      = value
