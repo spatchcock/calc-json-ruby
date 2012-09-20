@@ -15,6 +15,7 @@ module CalcJSON
       
 
       inputs = @definitions.select{|x| x.role == 'parameter' || x.role == 'variable'}
+      outputs = @definitions.select{|x| x.role == 'output'}
       context_options = @definitions.select{|x| x.role == 'context'}
 
       (inputs+context_options).each do |d| 
@@ -43,7 +44,7 @@ module CalcJSON
       js += "\n   #{@raw_js}"
       js += "\n   return {"
     
-      @definitions.each do |d| 
+      outputs.each do |d| 
         js += "\n    \"#{d.label}\" : #{d.label}"
         js += "," unless d == @definitions.last
       end
