@@ -19,7 +19,7 @@ module CalcJSON
       @definitions = json['definitions'].map { |d| Definition.new(d) }
       @filter      = json['filter']
       @data        = json['data']
-      @algorithm   = Algorithm.new(js || json['algorithm'], @definitions)
+      @algorithm   = Algorithm.new(js || json['algorithm'], @definitions, @data)
     end
 
     def calculation(options)

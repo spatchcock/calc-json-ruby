@@ -4,19 +4,40 @@ module CalcJSON
 
     attr_reader :raw_js, :definitions
 
-    def initialize(js, definitions)
+    def initialize(js, definitions, contexts)
     	@raw_js      = js
     	@definitions = definitions
+      @contexts    = contexts
     end
 
     def wrapped_js(options)
       js = "calculation = function() {"
+      
 
-      @definitions.each { |d| js += "\n   var #{d.label} = #{d.default || 'null'};" }
+      inputs = @definitions.select{|x| x.role == 'parameter' || x.role == 'variable'}
+      context_options = @definitions.select{|x| x.role == 'context'}
 
-  	  options.each do |key, value|
-  	  	type = @definitions.find {|d| d.label == key.to_s }.type 
-  	    js += "\n   #{key.to_s} = #{encode_input(value,type)};"
+      (inputs+context_options).each do |d| 
+        js += "\n   var #{d.label} = #{d.default || 'null'};"
+      end
+      
+      context = @contexts.find do |context|
+        context_options.all? do |option|
+          options[option.label] == context['values'][option.label] rescue false
+        end
+      end
+      if context
+        context['values'].each do |k,v|
+          type = @definitions.find {|d| d.label == k }.type 
+          js += "\n   #{k} = #{encode_input(v, type)};"
+        end
+      end
+
+      inputs.each do |input|
+        if options[input.label]
+          type = @definitions.find {|d| d.label == input.label }.type 
+          js += "\n   #{input.label} = #{encode_input(options[input.label],type)};"
+        end
       end
 
       js += "\n   #{@raw_js}"
