@@ -1,3 +1,5 @@
+require 'csv'
+
 module CalcJSON
 
   class Schema
@@ -7,8 +9,9 @@ module CalcJSON
 
       json = JSON.parse(File.read("#{name}.json"))
       js   = File.read("#{name}.js") rescue json['algorithm']
+      data = CSV.read("#{name}.csv", :headers => true).map{|x| {'values' => x.to_hash}} rescue json['data']
 
-      Model.new(json,js)
+      Model.new(json,js,data)
     end
 
   end

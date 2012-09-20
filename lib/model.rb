@@ -13,12 +13,12 @@ module CalcJSON
     attr_accessor :data
     attr_accessor :algorithm
 
-    def initialize(json,js = nil)
+    def initialize(json,js = nil,data = [])
       @name        = json['name']
       @label       = @name.downcase.gsub(" ","_") 
       @definitions = json['definitions'].map { |d| Definition.new(d) }
       @filter      = json['filter']
-      @data        = json['data']
+      @data        = data
       @algorithm   = Algorithm.new(js || json['algorithm'], @definitions, @data)
     end
 
