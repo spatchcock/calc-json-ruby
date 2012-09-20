@@ -22,15 +22,17 @@ module CalcJSON
         js += "\n   var #{d.label} = #{d.default || 'null'};"
       end
       
-      context = @contexts.find do |context|
-        context_options.all? do |option|
-          options[option.label] == context['values'][option.label] rescue false
+      if @contexts
+        context = @contexts.find do |context|
+          context_options.all? do |option|
+            options[option.label] == context['values'][option.label] rescue false
+          end
         end
-      end
-      if context
-        context['values'].each do |k,v|
-          type = @definitions.find {|d| d.label == k }.type 
-          js += "\n   #{k} = #{encode_input(v, type)};"
+        if context
+          context['values'].each do |k,v|
+            type = @definitions.find {|d| d.label == k }.type 
+            js += "\n   #{k} = #{encode_input(v, type)};"
+          end
         end
       end
 
