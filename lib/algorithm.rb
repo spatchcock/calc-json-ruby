@@ -30,8 +30,10 @@ module CalcJSON
         end
         if context
           context['values'].each do |k,v|
-            type = @definitions.find {|d| d.label == k }.type 
-            js += "\n   #{k} = #{encode_input(v, type)};"
+            definition = @definitions.find {|d| d.label == k }
+            if definition
+              js += "\n   #{k} = #{encode_input(v, definition.type)};"
+            end
           end
         end
       end
