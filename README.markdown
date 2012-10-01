@@ -2,7 +2,7 @@
 
 Parse and execute calcJSON data in Ruby.
 
-Author: Andrew Berkeley
+Authors: Andrew Berkeley, James Smith (Floppy)
 
 ## Examples
 
